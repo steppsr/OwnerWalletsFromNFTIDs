@@ -14,7 +14,8 @@ for id in $nft_ids; do
   nft_json=`curl -s https://api.mintgarden.io/nfts/$id`
   nft_id=`echo "$nft_json" | jq '.encoded_id' | cut -c 2- | rev | cut -c 2- | rev`
   nft_owner_wallet=`echo "$nft_json" | jq '.owner_address.encoded_id' | cut -c 2- | rev | cut -c 2- | rev`
-  echo "$n. $id $nft_owner_wallet"
+  #outputting to the console screen slows the script down
+  #echo "$n. $id $nft_owner_wallet"
   echo "$nft_owner_wallet" >> $appdir/results.txt
 
   n=$(($n+1))
